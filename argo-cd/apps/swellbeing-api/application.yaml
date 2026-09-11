@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: swellbeing-api
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/chrisashwalker/swellbeing-api.git
+    targetRevision: main
+    path: charts/swellbeing-api
+    # helm:
+      # valueFiles:
+        # - values-production.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: swellbeing
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
