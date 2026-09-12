@@ -10,6 +10,8 @@ spec:
     repoURL: https://github.com/chrisashwalker/swellbeing-gitops.git
     targetRevision: main
     path: argo-cd/apps
+    directory:
+      recurse: true
 
   destination:
     server: https://kubernetes.default.svc
