@@ -10,9 +10,6 @@ spec:
     repoURL: https://github.com/chrisashwalker/swellbeing-gitops.git
     targetRevision: main
     path: deployments/cloudflare-tunnel
-    # helm:
-      # valueFiles:
-        # - values-production.yaml
 
   destination:
     server: https://kubernetes.default.svc
@@ -23,3 +20,4 @@ spec:
       - CreateNamespace=true
     automated:
       selfHeal: true
+      prune: true
