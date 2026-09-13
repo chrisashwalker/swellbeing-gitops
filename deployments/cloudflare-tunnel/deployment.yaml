@@ -25,7 +25,8 @@ spec:
           command:
             - cloudflared
             - tunnel
-            - --no-autoupdate
+            - --autoupdate-freq 
+            - 72h
             - run
           livenessProbe:
             httpGet:
