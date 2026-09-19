@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: swellbeing-db
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: registry-1.docker.io/bitnamicharts
+    chart: postgresql
+    targetRevision: "18.11.4"
+
+    helm:
+      valuesObject:
+        architecture: standalone
+
+        auth:
+          username: swellbeing
+          database: swellbeing
+          existingSecret: postgres-credentials
+
+        primary:
+          persistence:
+            enabled: true
+            size: 512MiB
+            storageClass: local-path
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: swellbeing
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: false
