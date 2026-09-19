@@ -160,3 +160,18 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+  - name: DATABASE_HOST
+    value: "swellbeing-db-postgresql.swellbeing.svc.cluster.local"
+  - name: DATABASE_PORT
+    value: "5432"
+  - name: DATABASE_NAME
+    value: "swellbeing"
+  - name: DATABASE_USER
+    value: "swellbeing"
+  - name: DATABASE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: postgres-credentials
+        key: password
