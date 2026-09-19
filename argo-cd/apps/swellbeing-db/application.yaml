@@ -23,7 +23,7 @@ spec:
         primary:
           persistence:
             enabled: true
-            size: 512MiB
+            size: 512Mi
             storageClass: local-path
 
   destination:
