@@ -60,10 +60,12 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.env }}
           env:
+            {{- with .Values.env }}
             {{- toYaml . | nindent 12 }}
-          {{- end }}
+            {{- end }}
+            - name: ACCESS_TOKENS
+              value: "{{ .Values.env.SWELLBEING_UI_TOKEN }}"
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
