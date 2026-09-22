@@ -2,14 +2,11 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: swellbeing-db-migrate
-  namespace: argocd
+  namespace: swellbeing
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: swellbeing
   backoffLimit: 1
   template:
     spec:
