@@ -16,5 +16,7 @@ spec:
           image: chrisashwalker/swellbeing-api:latest
           command:
             - flask
+            - --app
+            - swellbeing_api.app:app
             - db
             - upgrade
