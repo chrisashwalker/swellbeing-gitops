@@ -175,7 +175,7 @@ env:
       secretKeyRef:
         name: postgres-credentials
         key: password
-  - name: SWELLBEING_UI_TOKEN
+  - name: ACCESS_TOKENS
     valueFrom:
       secretKeyRef:
         name: api-tokens
