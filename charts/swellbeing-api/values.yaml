@@ -68,7 +68,7 @@ ingress:
     - host: api.swellbeing.app
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls: 
     - secretName: swellbeing-api-tls
       hosts:
